@@ -6,14 +6,14 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 15:13:01 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 17:49:07 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/25 20:40:23 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_H
 # define CONTACT_H
 
-#include "mandatory.h"
+#include "mandatory.hpp"
 
 class Contact
 {
