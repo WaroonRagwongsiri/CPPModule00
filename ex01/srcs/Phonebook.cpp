@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:07:27 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 17:51:59 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/25 20:29:19 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,19 @@ static void is_valid(std::string input, std::string err_msg)
 
 static void is_valid(std::string input, std::string err_msg, int phone_len)
 {
+	int	i;
+
 	if (input.empty() == true)
 		throw std::invalid_argument(err_msg);
 	if ((int) input.length() != phone_len)
 		throw std::invalid_argument(err_msg);
+	i = 0;
+	while (input[i])
+	{
+		if (input[i] < '0' || input[i] > '9')
+			throw std::invalid_argument(err_msg);
+		++i;
+	}
 }
 
 void Phonebook::add()
@@ -64,19 +73,19 @@ void Phonebook::add()
 	{
 		std::cout << "First Name: ";
 		std::cin >> first_name;
-		is_valid(first_name, "Invalid First Name");
+		is_valid(first_name, "Empty First Name");
 		std::cout << "Last Name: ";
 		std::cin >> last_name;
-		is_valid(last_name, "Invalid Last Name");
+		is_valid(last_name, "Empty Last Name");
 		std::cout << "Nickname: ";
 		std::cin >> nickname;
-		is_valid(nickname, "Invalid Ncikname");
+		is_valid(nickname, "Empty Ncikname");
 		std::cout << "Phone Number: ";
 		std::cin >> phone_number;
-		is_valid(phone_number, "Invalid Phone Number", 10);
+		is_valid(phone_number, "Empty Phone Number or Phone length != 10 or Phone Number must be number", PHONE_LEN);
 		std::cout << "Darkest Secret: ";
 		std::cin >> darkest_secret;
-		is_valid(darkest_secret, "Invalid Darkest Secret");
+		is_valid(darkest_secret, "Empty Darkest Secret");
 		if (this->contact_count < MAX_CONTACT)
 		{
 			this->all_contact[contact_count] = new Contact(first_name, last_name, nickname, phone_number, darkest_secret);
@@ -118,7 +127,16 @@ void Phonebook::search()
 {
 	std::string	search_index;
 	int			i;
+	int			index;
 
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "index";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "firstname";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "lastname";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "nickname";
+	std::cout << "\n";
 	i = 0;
 	while (i < this->contact_count)
 	{
@@ -127,15 +145,65 @@ void Phonebook::search()
 		this->all_contact[i]->brief_info();
 		i++;
 	}
+	try
+	{
+		std::cout << "search index: ";
+		std::cin >> search_index;
+		is_valid(search_index, "Empty Search Index");
+		i = 0;
+		while (search_index[i])
+		{
+			if (search_index[i] < '0' || search_index[i] > '9')
+				throw std::invalid_argument("Index must be nunmber");
+			++i;
+		}
+		index = ft_atoi(search_index);
+		if (index >= this->contact_count || index < 0)
+			throw std::out_of_range("Out of range index");
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << "index";
+		std::cout << "|";
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << "firstname";
+		std::cout << "|";
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << "lastname";
+		std::cout << "|";
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << "nickname";
+		std::cout << "|";
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << "phoneno";
+		std::cout << "|";
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << "dark_sec";
+		std::cout << "\n";
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << index;
+		std::cout << "|";
+		this->all_contact[index]->info();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return ;
+	}
 }
 
 void Phonebook::logs()
 {
 	int	i;
 
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "index";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "firstname";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "lastname";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "nickname";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "phoneno";
+	std::cout << "|";
+	std::cout << std::right << std::setfill(' ') << std::setw(10) << "dark_sec";
+	std::cout << "\n";
 	i = 0;
 	while (i < this->contact_count)
 	{
+		std::cout << std::right << std::setfill(' ') << std::setw(10) << i;
+		std::cout << "|";
 		this->all_contact[i]->info();
 		i++;
 	}

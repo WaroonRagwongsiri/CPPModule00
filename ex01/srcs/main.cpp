@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 14:49:35 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 17:47:07 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/25 20:29:50 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Phonebook.hpp"
 
 #ifndef DEBUG
-# define DEBUG true
+# define DEBUG false
 #endif
 
 int main(void)
