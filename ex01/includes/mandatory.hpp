@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandatory.h                                        :+:      :+:    :+:   */
+/*   mandatory.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:01:51 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 20:27:54 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/25 20:47:05 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <iomanip>
 # include <string>
 # include <stdexcept>
-
-int	ft_atoi(std::string nptr);
+# include <cstdlib>
 
 #endif

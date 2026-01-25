@@ -6,7 +6,7 @@
 #    By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/25 14:04:44 by waroonwork@       #+#    #+#              #
-#    Updated: 2026/01/25 20:28:21 by waroonwork@      ###   ########.fr        #
+#    Updated: 2026/01/25 20:47:12 by waroonwork@      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SUFFIX		:=	.cpp
 INC_DIR		:=	includes/
 SRCS_DIR	:=	srcs/
 
-SRCS_FILES	:=	main Phonebook Contact utils
+SRCS_FILES	:=	main Phonebook Contact
 
 SRCS		:=	$(addsuffix $(SUFFIX), $(addprefix $(SRCS_DIR), $(SRCS_FILES)))
 OBJS		:=	$(SRCS:%$(SUFFIX)=%.o)

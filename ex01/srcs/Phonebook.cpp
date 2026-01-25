@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:07:27 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 20:29:19 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/25 20:46:18 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void Phonebook::search()
 				throw std::invalid_argument("Index must be nunmber");
 			++i;
 		}
-		index = ft_atoi(search_index);
+		index = std::atoi(search_index.c_str());
 		if (index >= this->contact_count || index < 0)
 			throw std::out_of_range("Out of range index");
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << "index";
