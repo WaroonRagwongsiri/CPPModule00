@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:07:27 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 20:46:18 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/29 21:01:11 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,11 @@
 
 Phonebook::Phonebook()
 {
-	int	i;
-
 	this->contact_count = 0;
-	i = 0;
-	while (i < MAX_CONTACT)
-	{
-		this->all_contact[i] = NULL;
-		i++;
-	}
 }
 
 Phonebook::~Phonebook()
 {
-	int	i;
-
-	i = 0;
-	while (i < MAX_CONTACT)
-	{
-		if (this->all_contact[i])
-			delete this->all_contact[i];
-		i++;
-	}
 }
 
 static void is_valid(std::string input, std::string err_msg)
@@ -88,12 +71,12 @@ void Phonebook::add()
 		is_valid(darkest_secret, "Empty Darkest Secret");
 		if (this->contact_count < MAX_CONTACT)
 		{
-			this->all_contact[contact_count] = new Contact(first_name, last_name, nickname, phone_number, darkest_secret);
+			this->all_contact[contact_count] = Contact(first_name, last_name, nickname, phone_number, darkest_secret);
 			this->contact_count++;
 			return ;
 		}
 		this->shift_down();
-		this->all_contact[MAX_CONTACT - 1] = new Contact(first_name, last_name, nickname, phone_number, darkest_secret);
+		this->all_contact[MAX_CONTACT - 1] = Contact(first_name, last_name, nickname, phone_number, darkest_secret);
 		return ;
 	}
 	catch(const std::exception& e)
@@ -106,19 +89,11 @@ void Phonebook::add()
 void Phonebook::shift_down()
 {
 	int		i;
-	Contact	*temp;
 
-	if (this->all_contact[0])
-	{
-		delete this->all_contact[0];
-		this->all_contact[0] = NULL;
-	}
 	i = 0;
 	while (i < MAX_CONTACT - 1)
 	{
-		temp = this->all_contact[i];
 		this->all_contact[i] = this->all_contact[i + 1];
-		this->all_contact[i + 1] = temp;
 		i++;
 	}
 }
@@ -142,7 +117,7 @@ void Phonebook::search()
 	{
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << i;
 		std::cout << "|";
-		this->all_contact[i]->brief_info();
+		this->all_contact[i].brief_info();
 		i++;
 	}
 	try
@@ -174,7 +149,7 @@ void Phonebook::search()
 		std::cout << "\n";
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << index;
 		std::cout << "|";
-		this->all_contact[index]->info();
+		this->all_contact[index].info();
 	}
 	catch(const std::exception& e)
 	{
@@ -204,7 +179,7 @@ void Phonebook::logs()
 	{
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << i;
 		std::cout << "|";
-		this->all_contact[i]->info();
+		this->all_contact[i].info();
 		i++;
 	}
 }

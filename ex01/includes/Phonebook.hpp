@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 15:13:51 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 20:40:26 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/29 21:13:57 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class Phonebook
 {
 	private:
-		Contact	*all_contact[MAX_CONTACT];
+		Contact	all_contact[MAX_CONTACT];
 		int		contact_count;
 		void	shift_down();
 	public:

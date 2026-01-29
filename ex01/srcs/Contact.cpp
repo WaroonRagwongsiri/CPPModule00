@@ -6,11 +6,20 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:10:03 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 17:49:31 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/01/29 21:04:53 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+Contact::Contact()
+{
+	this->first_name = DEFAULT_MSG;
+	this->last_name = DEFAULT_MSG;
+	this->nickname = DEFAULT_MSG;
+	this->phone_number = DEFAULT_MSG;
+	this->darkest_secret = DEFAULT_MSG;
+}
 
 Contact::Contact(std::string first_name, std::string last_name, \
 		std::string nickname, std::string phone_number, \
@@ -21,6 +30,18 @@ Contact::Contact(std::string first_name, std::string last_name, \
 	this->nickname = nickname;
 	this->phone_number = phone_number;
 	this->darkest_secret = darkest_secret;
+}
+
+Contact &Contact::operator=(const Contact &other)
+{
+	if (this == &other)
+		return (*this);
+	this->first_name = other.first_name;
+	this->last_name = other.last_name;
+	this->nickname = other.nickname;
+	this->phone_number = other.phone_number;
+	this->darkest_secret = other.darkest_secret;
+	return (*this);
 }
 
 Contact::~Contact()
