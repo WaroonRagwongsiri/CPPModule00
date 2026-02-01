@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:07:27 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/29 21:01:11 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/02/01 20:06:30 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void Phonebook::add()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 		return ;
 	}
 }
@@ -111,7 +111,7 @@ void Phonebook::search()
 	std::cout << std::right << std::setfill(' ') << std::setw(10) << "lastname";
 	std::cout << "|";
 	std::cout << std::right << std::setfill(' ') << std::setw(10) << "nickname";
-	std::cout << "\n";
+	std::cout << std::endl;
 	i = 0;
 	while (i < this->contact_count)
 	{
@@ -146,7 +146,7 @@ void Phonebook::search()
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << "phoneno";
 		std::cout << "|";
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << "dark_sec";
-		std::cout << "\n";
+		std::cout << std::endl;
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << index;
 		std::cout << "|";
 		this->all_contact[index].info();
@@ -173,7 +173,7 @@ void Phonebook::logs()
 	std::cout << std::right << std::setfill(' ') << std::setw(10) << "phoneno";
 	std::cout << "|";
 	std::cout << std::right << std::setfill(' ') << std::setw(10) << "dark_sec";
-	std::cout << "\n";
+	std::cout << std::endl;
 	i = 0;
 	while (i < this->contact_count)
 	{

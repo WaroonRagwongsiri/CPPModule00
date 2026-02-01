@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 14:09:02 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/25 14:27:08 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/02/01 20:05:41 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
 	}
 	i = 1;
@@ -34,6 +34,6 @@ int	main(int argc, char **argv)
 		std::cout << argv[i];
 		i++;
 	}
-	std::cout << "\n";
+	std::cout << std::endl;
 	return (0);
 }
