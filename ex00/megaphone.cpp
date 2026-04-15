@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 14:09:02 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/02/01 20:05:41 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/04/15 16:21:46 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			argv[i][j] = toupper(argv[i][j]);
+			argv[i][j] = std::toupper(argv[i][j]);
 			j++;
 		}
 		std::cout << argv[i];

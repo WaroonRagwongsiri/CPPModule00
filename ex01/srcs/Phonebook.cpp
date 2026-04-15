@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:07:27 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/02/01 20:06:30 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/04/15 16:49:39 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static void is_valid(std::string input, std::string err_msg)
 		throw std::invalid_argument(err_msg);
 }
 
-static void is_valid(std::string input, std::string err_msg, int phone_len)
+static void is_valid(std::string input, std::string err_msg, std::size_t phone_len)
 {
 	int	i;
 
 	if (input.empty() == true)
 		throw std::invalid_argument(err_msg);
-	if ((int) input.length() != phone_len)
+	if (input.length() != phone_len)
 		throw std::invalid_argument(err_msg);
 	i = 0;
 	while (input[i])
@@ -55,19 +55,24 @@ void Phonebook::add()
 	try
 	{
 		std::cout << "First Name: ";
-		std::cin >> first_name;
+		if (!std::getline(std::cin, first_name))
+			throw std::invalid_argument("got EOL");
 		is_valid(first_name, "Empty First Name");
 		std::cout << "Last Name: ";
-		std::cin >> last_name;
+		if (!std::getline(std::cin, last_name))
+			throw std::invalid_argument("got EOL");
 		is_valid(last_name, "Empty Last Name");
 		std::cout << "Nickname: ";
-		std::cin >> nickname;
-		is_valid(nickname, "Empty Ncikname");
+		if (!std::getline(std::cin, nickname))
+			throw std::invalid_argument("got EOL");
+		is_valid(nickname, "Empty Nickname");
 		std::cout << "Phone Number: ";
-		std::cin >> phone_number;
+		if (!std::getline(std::cin, phone_number))
+			throw std::invalid_argument("got EOL");
 		is_valid(phone_number, "Empty Phone Number or Phone length != 10 or Phone Number must be number", PHONE_LEN);
 		std::cout << "Darkest Secret: ";
-		std::cin >> darkest_secret;
+		if (!std::getline(std::cin, darkest_secret))
+			throw std::invalid_argument("got EOL");
 		is_valid(darkest_secret, "Empty Darkest Secret");
 		if (this->contact_count < MAX_CONTACT)
 		{
@@ -112,6 +117,9 @@ void Phonebook::search()
 	std::cout << "|";
 	std::cout << std::right << std::setfill(' ') << std::setw(10) << "nickname";
 	std::cout << std::endl;
+
+	std::cout << std::setfill('-') << std::setw(43) << "" << std::endl;
+
 	i = 0;
 	while (i < this->contact_count)
 	{
@@ -123,13 +131,14 @@ void Phonebook::search()
 	try
 	{
 		std::cout << "search index: ";
-		std::cin >> search_index;
+		if (!std::getline(std::cin, search_index))
+			throw std::invalid_argument("got EOL");
 		is_valid(search_index, "Empty Search Index");
 		i = 0;
 		while (search_index[i])
 		{
 			if (search_index[i] < '0' || search_index[i] > '9')
-				throw std::invalid_argument("Index must be nunmber");
+				throw std::invalid_argument("Index must be number");
 			++i;
 		}
 		index = std::atoi(search_index.c_str());
@@ -147,6 +156,9 @@ void Phonebook::search()
 		std::cout << "|";
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << "dark_sec";
 		std::cout << std::endl;
+
+		std::cout << std::setfill('-') << std::setw(65) << "" << std::endl;
+
 		std::cout << std::right << std::setfill(' ') << std::setw(10) << index;
 		std::cout << "|";
 		this->all_contact[index].info();
@@ -174,6 +186,9 @@ void Phonebook::logs()
 	std::cout << "|";
 	std::cout << std::right << std::setfill(' ') << std::setw(10) << "dark_sec";
 	std::cout << std::endl;
+
+	std::cout << std::setfill('-') << std::setw(65) << "" << std::endl;
+
 	i = 0;
 	while (i < this->contact_count)
 	{

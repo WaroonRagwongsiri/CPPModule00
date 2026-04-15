@@ -6,7 +6,7 @@
 /*   By: waroonwork@gmail.com <WaroonRagwongsiri    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 14:49:35 by waroonwork@       #+#    #+#             */
-/*   Updated: 2026/01/29 21:13:45 by waroonwork@      ###   ########.fr       */
+/*   Updated: 2026/04/15 16:38:16 by waroonwork@      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int main(void)
 	while (true)
 	{
 		std::cout << "prompt: ";
-		std::cin >> prompt;
+		if (!std::getline(std::cin, prompt))
+		{
+			std::cerr << "EOL" << std::endl;
+			return (1);
+		}
 		if (prompt.compare("ADD") == 0)
 			phonebook.add();
 		else if (prompt.compare("SEARCH") == 0)
